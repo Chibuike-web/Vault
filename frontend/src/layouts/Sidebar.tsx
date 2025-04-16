@@ -50,21 +50,12 @@ export default function Sidebar() {
 }
 
 const MenuItem = ({ id, title }: Playlist) => {
-	const routeId = id === "frontend" ? "" : id;
-	const match = useMatch(`/${routeId}`);
-
-	const isActive = Boolean(match);
-
 	return (
 		<li
 			id={id}
-			className={`flex gap-[0.625rem] items-center rounded-[0.5rem] h-10 px-4 text-[0.875rem] ${
-				isActive
-					? "bg-[#e6e6e6] text-gray-950 font-semibold"
-					: "hover:bg-[#f0f0f0] text-gray-600 font-regular"
-			}`}
+			className={`flex gap-[0.625rem] items-center rounded-[0.5rem] h-10 px-4 text-[0.875rem]`}
 		>
-			<NavLink to={`/${routeId}`}>{title}</NavLink>
+			{title}
 		</li>
 	);
 };
