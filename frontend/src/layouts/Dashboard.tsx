@@ -10,9 +10,8 @@ export default function Dashboard() {
 			<div className="w-full flex flex-col">
 				<Topbar />
 
-				{/* Main Content */}
-				<main className="w-full p-4 overflow-y-auto">
-					<Outlet /> {/* This is where Home or Settings will render */}
+				<main className="w-fulloverflow-y-auto">
+					<Outlet />
 				</main>
 			</div>
 		</div>

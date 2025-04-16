@@ -8,3 +8,14 @@ export function DoubleArrow() {
 		</svg>
 	);
 }
+
+export function ChevronRight() {
+	return (
+		<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<path
+				d="M10.7958 9.99907L7.08325 6.28657L8.14375 5.22607L12.9168 9.99907L8.14375 14.7721L7.08325 13.7116L10.7958 9.99907Z"
+				fill="#525866"
+			/>
+		</svg>
+	);
+}
