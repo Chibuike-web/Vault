@@ -38,7 +38,7 @@ const useIsActiveStore = create<isActiveStore>((set) => ({
 }));
 
 const useFilterStore = create<FilterStore>((set) => ({
-	filter: "",
+	filter: "All",
 	setFilter: (value: string) => set({ filter: value }),
 }));
 

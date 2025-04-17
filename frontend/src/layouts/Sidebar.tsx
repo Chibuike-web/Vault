@@ -2,6 +2,7 @@ import VaultLogo from "../assets/VaultLogo.svg";
 import { DoubleArrow, ChevronRight } from "../Icons";
 import Avatar from "../assets/Avatar.png";
 import { usePlaylists, Playlist, useIsActive } from "../components/store";
+import { useEffect } from "react";
 
 export default function Sidebar() {
 	const { playlists } = usePlaylists();
@@ -40,6 +41,14 @@ export default function Sidebar() {
 
 const MenuItem = ({ id, title }: Playlist) => {
 	const { isActive, setIsActive } = useIsActive();
+	const { playlists } = usePlaylists();
+
+	useEffect(() => {
+		if (!isActive && playlists.length > 0) {
+			setIsActive(playlists[0].id);
+		}
+	}, [isActive, playlists, setIsActive]);
+
 	return (
 		<li
 			id={id}
