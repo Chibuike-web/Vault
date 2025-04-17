@@ -22,6 +22,11 @@ type isActiveStore = {
 	setIsActive: (id: string) => void;
 };
 
+type FilterStore = {
+	filter: string;
+	setFilter: (value: string) => void;
+};
+
 const usePlaylistsStore = create<PlaylistsStore>((set) => ({
 	playlists: initialPlaylists,
 	setPlaylists: (newPlaylists: Playlist[]) => set({ playlists: newPlaylists }),
@@ -30,6 +35,11 @@ const usePlaylistsStore = create<PlaylistsStore>((set) => ({
 const useIsActiveStore = create<isActiveStore>((set) => ({
 	isActive: "",
 	setIsActive: (id: string) => set({ isActive: id }),
+}));
+
+const useFilterStore = create<FilterStore>((set) => ({
+	filter: "",
+	setFilter: (value: string) => set({ filter: value }),
 }));
 
 export const usePlaylists = () => {
@@ -45,5 +55,14 @@ export const useIsActive = () => {
 	return {
 		isActive,
 		setIsActive,
+	};
+};
+
+export const useFilter = () => {
+	const filter = useFilterStore((state) => state.filter);
+	const setFilter = useFilterStore((state) => state.setFilter);
+	return {
+		filter,
+		setFilter,
 	};
 };

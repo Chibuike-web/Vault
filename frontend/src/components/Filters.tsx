@@ -1,9 +1,10 @@
 import { useState } from "react";
+import { useFilter } from "./store";
 
-export default function Filter({ setFilter }: { setFilter: (option: string) => void }) {
+export default function Filter() {
 	const [active, setActive] = useState("All");
 	const options = ["All", "Videos", "Reels"];
-
+	const { setFilter } = useFilter();
 	const handleClick = (option: string) => {
 		setActive(option);
 		setFilter(option);
