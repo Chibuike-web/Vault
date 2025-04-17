@@ -1,21 +1,10 @@
-import { NavLink, useMatch } from "react-router-dom";
 import VaultLogo from "../assets/VaultLogo.svg";
 import { DoubleArrow, ChevronRight } from "../Icons";
 import Avatar from "../assets/Avatar.png";
-
-export type Playlist = {
-	id: string;
-	title: string;
-};
-
-export const playlists: Playlist[] = [
-	{ id: "frontend", title: "Frontend Vault" },
-	{ id: "design", title: "HCI + Design" },
-	{ id: "ai", title: "AI/ML" },
-	{ id: "deeptech", title: "Deep Tech Talks" },
-];
+import { usePlaylists, Playlist, useIsActive } from "../components/store";
 
 export default function Sidebar() {
+	const { playlists } = usePlaylists();
 	return (
 		<aside className="max-w-[272px] w-full bg-[#f5f5f5] text-black flex flex-col h-full">
 			<div>
@@ -50,10 +39,16 @@ export default function Sidebar() {
 }
 
 const MenuItem = ({ id, title }: Playlist) => {
+	const { isActive, setIsActive } = useIsActive();
 	return (
 		<li
 			id={id}
-			className={`flex gap-[0.625rem] items-center rounded-[0.5rem] h-10 px-4 text-[0.875rem]`}
+			className={`flex gap-[0.625rem] items-center rounded-[0.5rem] h-10 px-4 text-[0.875rem] hover:bg-[#e9e9e9] cursor-pointer ${
+				isActive === id ? "bg-[#e8e8e8]" : ""
+			}`}
+			onClick={() => {
+				setIsActive(id);
+			}}
 		>
 			{title}
 		</li>
