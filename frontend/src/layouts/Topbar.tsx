@@ -2,7 +2,7 @@ import Avatar from "../assets/Avatar.png";
 
 export default function Topbar() {
 	return (
-		<header className="px-8 py-[20px]">
+		<header className="px-8 py-[20px] sticky top-0 z-100 bg-white">
 			<div className="flex items-center gap-[10px]">
 				<img src={Avatar} alt="" className="w-full max-w-12" />
 				<div className="flex flex-col gap-[4px]">

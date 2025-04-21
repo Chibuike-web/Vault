@@ -3,14 +3,16 @@ import { create } from "zustand";
 export type Playlist = {
 	id: string;
 	title: string;
+	thumbnail?: string;
 };
 
-export const initialPlaylists: Playlist[] = [
-	{ id: "frontend", title: "Frontend Vault" },
-	{ id: "design", title: "HCI + Design" },
-	{ id: "ai", title: "AI/ML" },
-	{ id: "deeptech", title: "Deep Tech Talks" },
-];
+export type PlaylistItem = {
+	id: string;
+	title: string;
+	videoId: string;
+	thumbnail: string;
+	playlistId?: string;
+};
 
 type PlaylistsStore = {
 	playlists: Playlist[];
@@ -27,9 +29,23 @@ type FilterStore = {
 	setFilter: (value: string) => void;
 };
 
+type PlaylistItemsStore = {
+	playlistItems: PlaylistItem[];
+	setPlaylistItems: (newItems: PlaylistItem[] | ((prev: PlaylistItem[]) => PlaylistItem[])) => void;
+};
+
 const usePlaylistsStore = create<PlaylistsStore>((set) => ({
-	playlists: initialPlaylists,
+	playlists: [],
 	setPlaylists: (newPlaylists: Playlist[]) => set({ playlists: newPlaylists }),
+}));
+
+const usePlaylistItemsStore = create<PlaylistItemsStore>((set, get) => ({
+	playlistItems: [],
+	setPlaylistItems: (newItems) => {
+		const current = get().playlistItems;
+		const updated = typeof newItems === "function" ? newItems(current) : newItems;
+		set({ playlistItems: updated });
+	},
 }));
 
 const useIsActiveStore = create<isActiveStore>((set) => ({
@@ -65,4 +81,10 @@ export const useFilter = () => {
 		filter,
 		setFilter,
 	};
+};
+
+export const usePlaylistItems = () => {
+	const playlistItems = usePlaylistItemsStore((state) => state.playlistItems);
+	const setPlaylistItems = usePlaylistItemsStore((state) => state.setPlaylistItems);
+	return { playlistItems, setPlaylistItems };
 };
