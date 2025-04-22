@@ -31,7 +31,7 @@ type FilterStore = {
 
 type PlaylistItemsStore = {
 	playlistItems: PlaylistItem[];
-	setPlaylistItems: (newItems: PlaylistItem[] | ((prev: PlaylistItem[]) => PlaylistItem[])) => void;
+	setPlaylistItems: (newPlaylistItems: PlaylistItem[]) => void;
 };
 
 const usePlaylistsStore = create<PlaylistsStore>((set) => ({
@@ -39,13 +39,12 @@ const usePlaylistsStore = create<PlaylistsStore>((set) => ({
 	setPlaylists: (newPlaylists: Playlist[]) => set({ playlists: newPlaylists }),
 }));
 
-const usePlaylistItemsStore = create<PlaylistItemsStore>((set, get) => ({
+const usePlaylistItemsStore = create<PlaylistItemsStore>((set) => ({
 	playlistItems: [],
-	setPlaylistItems: (newItems) => {
-		const current = get().playlistItems;
-		const updated = typeof newItems === "function" ? newItems(current) : newItems;
-		set({ playlistItems: updated });
-	},
+	setPlaylistItems: (newItems: PlaylistItem[]) =>
+		set({
+			playlistItems: newItems,
+		}),
 }));
 
 const useIsActiveStore = create<isActiveStore>((set) => ({
@@ -86,5 +85,6 @@ export const useFilter = () => {
 export const usePlaylistItems = () => {
 	const playlistItems = usePlaylistItemsStore((state) => state.playlistItems);
 	const setPlaylistItems = usePlaylistItemsStore((state) => state.setPlaylistItems);
+	// const replacePlaylistItems = usePlaylistItemsStore((state) => state.replacePlaylistItems);
 	return { playlistItems, setPlaylistItems };
 };

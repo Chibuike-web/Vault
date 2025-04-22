@@ -15,7 +15,7 @@ export default function Dashboard() {
 			<div className="w-full flex flex-col">
 				<Topbar />
 
-				<main className="w-full">
+				<main className="w-full min-h-full">
 					<MainContent />
 				</main>
 			</div>
@@ -41,36 +41,21 @@ const MainContent = () => {
 			console.log("No playlists found yet.");
 			return;
 		}
-		const fetchAllItems = async () => {
-			for (let playlist of playlists) {
-				console.log("Fetching items for playlist:", playlist.id);
 
-				const items = await fetchPlaylistItems(playlist.id);
-				console.log("Fetched items:", items);
-
-				// Only set if you want to see them in UI
-				setPlaylistItems((prev) => [...prev, ...items]);
-			}
-		};
-
-		fetchAllItems();
-	}, [playlists]);
+		fetchPlaylistItems(isActive).then((data) => setPlaylistItems(data));
+	}, [playlists, isActive]);
 
 	return (
 		<div>
 			<Filter />
 			<section className="px-8 grid grid-cols-4 gap-6 w-full">
-				{playlists.map((playlist) =>
-					playlist.id === isActive
-						? playlistItems.map((item) => (
-								<div key={item.id}>
-									{(filter === "All" || filter === "Videos" || filter === "Reels") && (
-										<Card title={item.title} image={item.thumbnail} />
-									)}
-								</div>
-						  ))
-						: null
-				)}
+				{playlistItems.map((item) => (
+					<div key={item.id}>
+						{(filter === "All" || filter === "Videos" || filter === "Reels") && (
+							<Card title={item.title} image={item.thumbnail} />
+						)}
+					</div>
+				))}
 			</section>
 		</div>
 	);

@@ -57,6 +57,7 @@ const MenuItem = ({ id, title }: Playlist) => {
 			}`}
 			onClick={() => {
 				setIsActive(id);
+				console.log(id);
 			}}
 		>
 			{title}
