@@ -7,7 +7,7 @@ import { useEffect } from "react";
 export default function Sidebar() {
 	const { playlists } = usePlaylists();
 	return (
-		<aside className="max-w-[272px] w-full bg-[#f5f5f5] text-black flex flex-col h-[1080px] sticky top-0">
+		<aside className="max-w-[272px] w-full bg-[#f5f5f5] text-black flex flex-col h-screen sticky top-0">
 			<div>
 				<div className="px-[1.25rem] py-6 flex items-center justify-between">
 					<div className="flex gap-[0.75rem] items-center">

@@ -15,7 +15,7 @@ export default function Dashboard() {
 			<div className="w-full flex flex-col">
 				<Topbar />
 
-				<main className="w-full min-h-full">
+				<main className="w-full">
 					<MainContent />
 				</main>
 			</div>
@@ -48,7 +48,7 @@ const MainContent = () => {
 	return (
 		<div>
 			<Filter />
-			<section className="px-8 grid grid-cols-4 gap-6 w-full">
+			<section className="px-8 grid grid-cols-[repeat(auto-fill,minmax(272px,1fr))] gap-6 w-full pb-12">
 				{playlistItems.map((item) => (
 					<div key={item.id}>
 						{(filter === "All" || filter === "Videos" || filter === "Reels") && (
