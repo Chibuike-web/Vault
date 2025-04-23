@@ -1,14 +1,16 @@
-import Avatar from "../assets/Avatar.png";
+import { NotificationIcon, SearchIcon } from "../Icons";
 
 export default function Topbar() {
 	return (
-		<header className="px-8 py-[20px] sticky top-0 z-100 bg-white">
-			<div className="flex items-center gap-[10px]">
-				<img src={Avatar} alt="" className="w-full max-w-12" />
-				<div className="flex flex-col gap-[4px]">
-					<h3 className="text-gray-950 font-bold text-[18px]">Chibuike Maduabuchi</h3>
-					<p className="text-[14px] text-gray-600 font-medium">Welcome back to Vault 👋🏻</p>
-				</div>
+		<header className="px-8 py-[28px] flex justify-between items-center sticky top-0 z-100 bg-white border-b border-black/10">
+			<h2 className="text-[20px] font-semibold">Welcome Chibuike</h2>
+			<div className="flex items-center">
+				<button type="button">
+					<SearchIcon />
+				</button>
+				<button type="button">
+					<NotificationIcon />
+				</button>
 			</div>
 		</header>
 	);

@@ -1,6 +1,6 @@
-export default function Card({ title, image }: { title: string; image: string }) {
+export default function Card({ title, image, url }: { title: string; image: string; url: string }) {
 	return (
-		<article className="w-full flex flex-col gap-[0.75rem]">
+		<a href={url} className="w-full flex flex-col gap-[0.75rem]">
 			<figure className="w-full overflow-hidden rounded-[0.5rem] relative">
 				<img src={image} alt="" className="w-full" />
 				<div className="absolute right-[0.5rem] bottom-[0.5rem] rounded-[0.375rem] text-[0.75rem] text-white bg-black/80 p-[0.25rem]">
@@ -16,6 +16,6 @@ export default function Card({ title, image }: { title: string; image: string })
 					<p>1 year ago</p>
 				</div>
 			</div>
-		</article>
+		</a>
 	);
 }

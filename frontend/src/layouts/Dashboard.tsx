@@ -32,7 +32,6 @@ const MainContent = () => {
 	useEffect(() => {
 		fetchPlaylists().then((data) => {
 			setPlaylists(data);
-			console.log(data);
 		});
 	}, []);
 
@@ -42,21 +41,24 @@ const MainContent = () => {
 			return;
 		}
 
-		fetchPlaylistItems(isActive).then((data) => setPlaylistItems(data));
+		fetchPlaylistItems(isActive).then((data) => {
+			setPlaylistItems(data);
+			console.log(data);
+		});
 	}, [playlists, isActive]);
 
 	return (
-		<div>
+		<>
 			<Filter />
 			<section className="px-8 grid grid-cols-[repeat(auto-fill,minmax(272px,1fr))] gap-6 w-full pb-12">
 				{playlistItems.map((item) => (
 					<div key={item.id}>
 						{(filter === "All" || filter === "Videos" || filter === "Reels") && (
-							<Card title={item.title} image={item.thumbnail} />
+							<Card title={item.title} image={item.thumbnail} url={item.url} />
 						)}
 					</div>
 				))}
 			</section>
-		</div>
+		</>
 	);
 };

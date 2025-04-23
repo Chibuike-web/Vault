@@ -11,7 +11,7 @@ export default function Filter() {
 	};
 
 	return (
-		<div className="flex gap-3 mb-4 sticky top-[88px] bg-white z-100 px-8 py-6">
+		<div className="flex gap-3 mb-4 sticky top-[97px] bg-white z-100 px-8 py-6 border-b border-black/10">
 			{options.map((option) => (
 				<button
 					key={option}

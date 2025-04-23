@@ -11,7 +11,7 @@ export type PlaylistItem = {
 	title: string;
 	videoId: string;
 	thumbnail: string;
-	playlistId?: string;
+	url: string;
 };
 
 type PlaylistsStore = {
