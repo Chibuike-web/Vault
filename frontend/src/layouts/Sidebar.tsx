@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 import { UpDownArrow } from "../Icons";
 import Avatar from "../assets/Avatar.png";
 import { usePlaylists, Playlist, useIsActive } from "../components/store";
@@ -42,17 +43,18 @@ const MenuItem = ({ id, title }: Playlist) => {
 	}, [isActive, playlists, setIsActive]);
 
 	return (
-		<li
-			id={id}
-			className={`flex gap-[0.625rem] items-center rounded-[0.5rem] h-9 px-4 text-[0.875rem] hover:bg-[#e9e9e9] cursor-pointer ${
-				isActive === id ? "bg-[#e8e8e8]" : ""
-			}`}
-			onClick={() => {
-				setIsActive(id);
-				console.log(id);
-			}}
-		>
-			{title}
-		</li>
+		<Link to={`/${id}`}>
+			<li
+				id={id}
+				className={`flex gap-[0.625rem] items-center rounded-[0.5rem] h-9 px-4 text-[0.875rem] hover:bg-[#e9e9e9] cursor-pointer ${
+					isActive === id ? "bg-[#e8e8e8] font-semibold text-gray-950" : ""
+				}`}
+				onClick={() => {
+					setIsActive(id);
+				}}
+			>
+				{title}
+			</li>
+		</Link>
 	);
 };
