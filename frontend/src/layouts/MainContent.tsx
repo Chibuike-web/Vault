@@ -9,7 +9,7 @@ export default function MainContent() {
 	return (
 		<>
 			<Filter />
-			<section className="px-8 grid grid-cols-[repeat(auto-fill,minmax(272px,1fr))] gap-6 w-full pb-12">
+			<section className="px-8 xl:max-w-[1440px] xl:mx-auto grid grid-cols-[repeat(auto-fill,minmax(272px,1fr))] gap-6 w-full pb-12">
 				{playlistItems.map((item) => (
 					<div key={item.id}>
 						{(filter === "All" || filter === "Videos" || filter === "Reels") && (

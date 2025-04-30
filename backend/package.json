@@ -6,22 +6,28 @@
 	"scripts": {
 		"start": "node dist/server.js",
 		"build": "tsc",
-		"dev": "nodemon src/server.ts"
+		"dev": "nodemon --exec ts-node src/server.ts"
 	},
 	"keywords": [],
 	"author": "",
 	"license": "ISC",
-	"packageManager": "pnpm@10.8.1",
+	"packageManager": "pnpm@10.10.0",
 	"dependencies": {
 		"cors": "^2.8.5",
 		"dotenv": "^16.5.0",
-		"express": "^5.1.0"
+		"express": "^5.1.0",
+		"express-session": "^1.18.1",
+		"passport": "^0.7.0",
+		"passport-google-oauth20": "^2.0.0"
 	},
 	"devDependencies": {
 		"@types/cors": "^2.8.17",
 		"@types/express": "^5.0.1",
-		"@types/node": "^22.14.1",
-		"nodemon": "^3.1.9",
+		"@types/express-session": "^1.18.1",
+		"@types/node": "^22.15.3",
+		"@types/passport": "^1.0.17",
+		"@types/passport-google-oauth20": "^2.0.16",
+		"nodemon": "^3.1.10",
 		"ts-node": "^10.9.2",
 		"typescript": "^5.8.3"
 	}

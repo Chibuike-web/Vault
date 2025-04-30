@@ -2,9 +2,13 @@ import Dashboard from "./layouts/Dashboard";
 import { createBrowserRouter, RouterProvider } from "react-router";
 import MainContent from "./layouts/MainContent";
 import NotFound from "./layouts/NotFound";
-import Auth from "./layouts/Auth";
+import SignIn from "./layouts/SignIn";
 
 const router = createBrowserRouter([
+	{
+		path: "/signin",
+		element: <SignIn />,
+	},
 	{
 		path: "/",
 		element: <Dashboard />,
@@ -13,10 +17,6 @@ const router = createBrowserRouter([
 	{
 		path: "*",
 		element: <NotFound />,
-	},
-	{
-		path: "/signin",
-		element: <Auth />,
 	},
 ]);
 
